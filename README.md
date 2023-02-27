@@ -6,3 +6,6 @@
 - Run composer update
 - Run php artisan key:generate
 - Project is finished and run API
+
+To view the documentation you can see via the link below
+https://documenter.getpostman.com/view/1113384/2s93CPqsDs

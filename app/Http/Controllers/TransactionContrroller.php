@@ -86,6 +86,7 @@ class TransactionContrroller extends Controller
             'koli_data.*.koli_chargeable_weight' => ['required','integer','min:0'],
             'koli_data.*.koli_description' => ['required','string'],
             'koli_data.*.koli_weight' => ['required','integer','min:0'],
+            'custom_field' => ['required','array'],
         ];
 
         $validator = Validator::make($data,$rules);
@@ -93,8 +94,8 @@ class TransactionContrroller extends Controller
         // check validasi
         if($validator->fails()){
             return response()->json([
-                'status' => 'success',
-                'messag' => $validator->errors()
+                'status' => 'error',
+                'message' => $validator->errors()
             ],400);
         }
 
@@ -445,7 +446,7 @@ class TransactionContrroller extends Controller
      */
     public function destroy($id)
     {
-        $transaction = Transaction::findOrFail($id);
+        $transaction = Transaction::find($id);
         if(!$transaction){
             return response()->json([
                 'status' => 'error',
